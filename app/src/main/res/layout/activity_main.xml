@@ -11,8 +11,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <LinearLayout
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="16dp"
@@ -23,24 +27,25 @@
 
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
                 android:src="@drawable/cinco"/>
 
             <EditText
+                android:id="@+id/campo_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome do Setor auditado"
-                android:id="@+id/name_field"
                 android:inputType="text"/>
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 style="@style/CustomText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Criado por Lucas M. Boy"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingBottom="16dp"
@@ -55,7 +60,6 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView"
                         style="@style/CustomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -66,6 +70,18 @@
                         android:paddingRight="16dp"
                         android:paddingTop="16dp"
                         android:text="Senso da Utilização" />
+
+                    <CheckBox
+                        android:id="@+id/respondido_utilizaçao_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:text="RESPONDIDO" />
 
                 </LinearLayout>
 
@@ -99,34 +115,56 @@
                         android:orientation="horizontal">
 
 
-                        <CheckBox
-                            android:id="@+id/ok_utilizaçao_checkbox"
-                            style="@style/CustomText"
+                        <RadioGroup
+                            android:id="@+id/radio_utilizaçao"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="OK" />
+                            android:layout_height="wrap_content">
 
-                        <CheckBox
-                            android:id="@+id/medio_utilizaçao_checkbox"
-                            style="@style/CustomText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="NÃO OK" />
+                            <RadioButton
+                                android:id="@+id/radioUtilizaçaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="onRadioButtonClicked"
+                                android:text="@string/ok" />
+
+                            <RadioButton
+                                android:id="@+id/radioUtilizaçaoRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked1"
+                                android:text="@string/regular" />
+
+                            <RadioButton
+                                android:id="@+id/radioUtilizaçaoNaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked2"
+                                android:text="@string/nao_ok" />
+
+                        </RadioGroup>
 
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CustomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Observações:" />
+
+                    <EditText
+                        android:id="@+id/observaçoes_utilizaçao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Escrever as Observações " />
 
                 </LinearLayout>
 
@@ -152,6 +190,18 @@
                         android:paddingRight="16dp"
                         android:paddingTop="16dp"
                         android:text="Senso da Organização" />
+
+                    <CheckBox
+                        android:id="@+id/respondido_organizaçao_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:text="RESPONDIDO" />
 
                 </LinearLayout>
 
@@ -184,32 +234,56 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <CheckBox
-                            android:id="@+id/ok_organizaçao_checkbox"
-                            style="@style/CustomText"
+                        <RadioGroup
+                            android:id="@+id/radio_organizaçao"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="OK" />
+                            android:layout_height="wrap_content">
 
-                        <CheckBox
-                            android:id="@+id/medio_organizaçao_checkbox"
-                            style="@style/CustomText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="NÃO OK" />
+                            <RadioButton
+                                android:id="@+id/radioOrganizaçaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="onRadioButtonClicked3"
+                                android:text="@string/ok" />
+
+                            <RadioButton
+                                android:id="@+id/radioOrganizaçaoRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked4"
+                                android:text="@string/regular" />
+
+                            <RadioButton
+                                android:id="@+id/radioOrganizaçaoNaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked5"
+                                android:text="@string/nao_ok" />
+
+                        </RadioGroup>
 
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CustomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Observações:" />
+
+                    <EditText
+                        android:id="@+id/observaçoes_organizaçao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Escrever as Observações " />
 
                 </LinearLayout>
 
@@ -236,6 +310,18 @@
                         android:paddingRight="16dp"
                         android:paddingTop="16dp"
                         android:text="Senso da Limpeza" />
+
+                    <CheckBox
+                        android:id="@+id/respondido_limpeza_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:text="RESPONDIDO" />
 
                 </LinearLayout>
 
@@ -267,32 +353,55 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <CheckBox
-                            android:id="@+id/ok_limpeza_checkbox"
-                            style="@style/CustomText"
+                        <RadioGroup
+                            android:id="@+id/radio_limpeza"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="OK" />
+                            android:layout_height="wrap_content">
 
-                        <CheckBox
-                            android:id="@+id/medio_limpeza_checkbox"
-                            style="@style/CustomText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="NÃO OK" />
+                            <RadioButton
+                                android:id="@+id/radioLimpezaOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="onRadioButtonClicked6"
+                                android:text="@string/ok" />
 
+                            <RadioButton
+                                android:id="@+id/radioLimpezaRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked7"
+                                android:text="@string/regular" />
+
+                            <RadioButton
+                                android:id="@+id/radioLimpezaNaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked8"
+                                android:text="@string/nao_ok" />
+
+                        </RadioGroup>
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CustomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Observações:" />
+
+                    <EditText
+                        android:id="@+id/observaçoes_limpeza"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Escrever as Observações " />
 
                 </LinearLayout>
 
@@ -318,6 +427,18 @@
                         android:paddingRight="16dp"
                         android:paddingTop="16dp"
                         android:text="Senso da Padronização" />
+
+                    <CheckBox
+                        android:id="@+id/respondido_padronizaçao_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:text="RESPONDIDO" />
 
                 </LinearLayout>
 
@@ -350,32 +471,55 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <CheckBox
-                            android:id="@+id/ok_padronizaçao_checkbox"
-                            style="@style/CustomText"
+                        <RadioGroup
+                            android:id="@+id/radio_padronizaçao"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="OK" />
+                            android:layout_height="wrap_content">
 
-                        <CheckBox
-                            android:id="@+id/medio_padronizaçao_checkbox"
-                            style="@style/CustomText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="NÃO OK" />
+                            <RadioButton
+                                android:id="@+id/radioPadronizaçaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="onRadioButtonClicked9"
+                                android:text="@string/ok" />
 
+                            <RadioButton
+                                android:id="@+id/radioPadronizaçaoRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked10"
+                                android:text="@string/regular" />
+
+                            <RadioButton
+                                android:id="@+id/radioPadronizaçaoNaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked11"
+                                android:text="@string/nao_ok" />
+
+                        </RadioGroup>
 
                     </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CustomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Observações:" />
+
+                    <EditText
+                        android:id="@+id/observaçoes_padronizaçao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Escrever as Observações " />
+
                 </LinearLayout>
 
                 <View
@@ -400,6 +544,18 @@
                         android:paddingRight="16dp"
                         android:paddingTop="16dp"
                         android:text="Senso da Disciplina" />
+
+                    <CheckBox
+                        android:id="@+id/respondido_disciplina_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="16dp"
+                        android:text="RESPONDIDO" />
 
                 </LinearLayout>
 
@@ -432,32 +588,56 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <CheckBox
-                            android:id="@+id/ok_disciplina_checkbox"
-                            style="@style/CustomText"
+                        <RadioGroup
+                            android:id="@+id/radio_disciplina"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="OK" />
+                            android:layout_height="wrap_content">
 
-                        <CheckBox
-                            android:id="@+id/medio_disciplina_checkbox"
-                            style="@style/CustomText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:paddingBottom="16dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:paddingTop="16dp"
-                            android:text="NÃO OK" />
+                            <RadioButton
+                                android:id="@+id/radioDisciplinaOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="onRadioButtonClicked12"
+                                android:text="@string/ok" />
+
+                            <RadioButton
+                                android:id="@+id/radioDisciplinaRegular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked13"
+                                android:text="@string/regular" />
+
+                            <RadioButton
+                                android:id="@+id/radioDisciplinaNaoOk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="onRadioButtonClicked14"
+                                android:text="@string/nao_ok" />
+
+                        </RadioGroup>
 
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/CustomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Observações:" />
+
+                    <EditText
+                        android:id="@+id/observaçoes_disciplina"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Escrever as Observações " />
 
                 </LinearLayout>
 
@@ -470,24 +650,25 @@
 
                 <TextView
                     android:id="@+id/resultado_summary_text_view"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="0 %"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="NOTA"
-                android:onClick="nota"/>
-
-        </LinearLayout>
+                android:layout_gravity="center"
+                android:onClick="nota"
+                android:text="NOTA" />
 
 
+            </LinearLayout>
 
+
+        </FrameLayout>
     </HorizontalScrollView>
 </ScrollView>
